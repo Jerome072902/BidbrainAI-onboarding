@@ -1,0 +1,98 @@
+# =====================================================================
+# BidbrainAI — local dev stack (core: db + api + portal)
+# =====================================================================
+# Runs everything in Docker; nothing needs to be installed locally
+# except Docker Desktop.
+#
+#   Start:   docker compose up -d --build     (or ..\dev-up.ps1)
+#   Logs:    docker compose logs -f api portal
+#   Stop:    docker compose down              (add -v to wipe the DB)
+#
+# Services:
+#   db          Postgres 16 (plain image — Supabase auth stack not included)
+#   migrations  one-shot `alembic upgrade head`, runs before the api
+#   api         bidbrainai-api (FastAPI/uvicorn)  -> http://localhost:8000
+#   portal      bidbrainai-portal in DEV mode (`next dev`, hot reload,
+#               source bind-mounted, per the ADR-0034 dev-box pattern)
+#                                               -> http://localhost:3000
+#
+# NOTE: no Supabase/gotrue here, so real login is not available. The
+# portal uses DEV_PROFILE_STUB=bidbrain-admin (see .env.portal) to
+# render without a session. Add the Supabase stack later if you need
+# real auth locally.
+# =====================================================================
+
+name: bidbrainai-dev
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file: .env.db
+    ports:
+      - "5432:5432" # expose for DBeaver/psql etc.; remove if it clashes
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  migrations:
+    build: ../bidbrainai-api
+    image: bidbrainai-api:dev
+    env_file: .env.api
+    command: ["alembic", "upgrade", "head"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    image: bidbrainai-api:dev # built by the migrations service above
+    restart: unless-stopped
+    env_file: .env.api
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+
+  portal:
+    image: node:20-bookworm-slim
+    restart: unless-stopped
+    working_dir: /app
+    env_file: .env.portal
+    ports:
+      - "3000:3000"
+    volumes:
+      # Live source from the repo — edits on Windows hot-reload in the container.
+      - ../bidbrainai-portal:/app
+      # Heavy dirs live in named volumes (much faster than the Windows
+      # bind mount, and pnpm's install never clutters the repo checkout).
+      - portal-node-modules:/app/node_modules
+      - portal-next:/app/.next
+    command:
+      - bash
+      - -lc
+      - "corepack enable && corepack prepare pnpm@9.12.0 --activate && pnpm install --frozen-lockfile && exec pnpm exec next dev -H 0.0.0.0 -p 3000"
+    depends_on:
+      - api
+    healthcheck:
+      test:
+        - "CMD"
+        - "node"
+        - "-e"
+        - "fetch('http://localhost:3000/').then(r => process.exit(r.status < 500 ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 20s
+      retries: 5
+      start_period: 240s # pnpm install + first next-dev compile take a while
+
+volumes:
+  db-data:
+  portal-node-modules:
+  portal-next:
