@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" agent="claude" version="24.0.0">
+  <diagram id="overview" name="System overview">
+    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" value="You (agency)&#10;brings a brief" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="portal" value="Portal&#10;Next.js web app" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="250" y="80" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="API&#10;FastAPI backend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="460" y="80" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="Postgres&#10;all the data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="670" y="80" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="scraper" value="Scraper&#10;reads brand sites&#10;(Cloudflare Worker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="140" y="280" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" value="LLM gateway&#10;Claude + Gemini" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="350" y="280" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="platforms" value="Ad platforms&#10;Google, LinkedIn, Meta, Reddit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="560" y="280" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="user" target="portal"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="portal" target="api"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="api" target="db"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;" edge="1" parent="1" source="api" target="scraper"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;" edge="1" parent="1" source="api" target="gateway"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;" edge="1" parent="1" source="api" target="platforms"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="legend" value="purple = code we own &#183; green = services the api calls &#183; gray = people and data" style="text;html=1;align=center;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="140" y="400" width="560" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="pipeline" name="Campaign pipeline">
+    <mxGraphModel dx="1000" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p_portal" value="Portal&#10;create campaign + brief" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="180" y="40" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_api" value="API orchestrator&#10;runs the pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="480" y="40" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="container" value="inside the api, in order" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;verticalAlign=top;align=left;spacingLeft=8;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="150" width="780" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="1. Scrape site&#10;scraper worker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="190" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="2. Brand DNA&#10;AI via gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="3. Keywords&#10;AI + Google keyword planner" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="570" y="190" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="4. Campaign structure&#10;AI via gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="290" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="5. Ad copy&#10;AI via gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="320" y="290" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="6. Build assets&#10;structure xlsx, media plan, deck" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7;strokeColor=#9673A6;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="570" y="290" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="Assets ready&#10;shown in the portal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="70" y="440" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="You review&#10;tweak and approve" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="320" y="440" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="Activate&#10;push to ad platforms" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;fontSize=13;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="570" y="440" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pe1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="p_portal" target="p_api"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="p_api" target="s1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="s1" target="s2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="s2" target="s3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="s3" target="s4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="s4" target="s5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="s5" target="s6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="s6" target="b1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="b1" target="b2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="pe10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="b2" target="b3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="p_legend" value="green = api calls another service &#183; purple = api does it itself &#183; orange = external ad platforms" style="text;html=1;align=center;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="140" y="540" width="580" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

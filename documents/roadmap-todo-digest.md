@@ -1,0 +1,461 @@
+# Roadmap to-do digest (exported 2026-07-07)
+
+416 open items (of 1042 total). Grouped by area label. Source: GitHub project 'BidbrainAI Roadmap', view 2.
+
+## portal (146)
+
+- #106 [Story] Reporter empty + error states
+- #245 [Story] Portal: Planner Step 2 Advertiser - inline create, typeahead, role-aware variants (post-Cairns)
+- #317 [Epic] BidbrainAI Portal UI - PILOT
+- #329 [Epic] BidbrainAI Portal UI - Post Go-live
+- #330 [Feature] Campaign wizard
+- #331 [Epic] BidbrainAI Portal UI - Deferred / Undecided / Maybes
+- #332 [Feature] User login
+- #333 [Story] api: POST /auth/refresh - rotate JWT via gotrue refresh-grant (dup of #204)
+- #334 [Story] portal: bb_session refresh interceptor + 401 retry (apiServer) (dup of #205)
+- #335 [Story] Complete password-reset UI click-through smoke (deferred from #192) (dup of #276)
+- #337 [Task] Login: Slack alert on 5xx auth responses (observability) (dup of #185)
+- #339 [Feature] Campaign Dashboard & Detail Card
+- #340 [Story] Campaign Detail Card slide-in panel + metadata (dup of #92)
+- #341 [Story] CDC summary section (high-level performance stats) (dup of #93)
+- #342 [Story] CDC documents list + 5s polling (dup of #94)
+- #343 [Feature] FastAPI Client & Error Handling
+- #344 [Story] OpenAPI -> TypeScript client codegen build step (dup of #111)
+- #345 [Story] JWT refresh interceptor (HTTP client) (dup of #112)
+- #346 [Story] Centralised error handling (error boundary + toast + types) (dup of #113)
+- #347 [Story] Error message mapping per status code (dup of #114)
+- #348 [Story] Retry mechanism for idempotent GET requests (dup of #115)
+- #349 [Spike] Runtime API response validation strategy (Zod / valibot / hand-rolled / none) (dup of #218)
+- #350 [Spike] Portal/API type lockstep via openapi-codegen (which generator, regen workflow, drift checking) (dup of #219)
+- #351 [Feature] Portal Layout, Routing & Permissions
+- #370 [Feature] general functionality
+- #379 [Feature] Login & authentication UX polish
+- #384 [Story] Scope distinct rate-limit / lockout messaging on login
+- #385 [Story] Scope already-signed-in detection on /login
+- #386 [Story] Scope footer trust strip on auth pages
+- #387 [Feature] Login & authentication polish ΓÇö Post Go-live
+- #388 [Story] Email domain typo correction on login form
+- #389 [Story] 'Remember this device' checkbox on login form
+- #391 [Story] Unsupported-browser notice on login page
+- #395 [Feature] Clients
+- #396 [Feature] Settings
+- #397 [Feature] Responsiveness
+- #398 [Feature] Local env flags
+- #399 [Feature] Platforms and channels
+- #400 [Feature] Dashboard
+- #401 [Feature] Campaigns
+- #402 ^remove adding new client, and direct user back to /clients
+- #403 ^brief and details fields
+- #404 ^channel icons
+- #405 ^channel step name and content layout
+- #406 ^add default margins, real email, real active campaigns
+- #407 ^create client id page skeleton
+- #412 [Spike] Investigate Next 16 anchor-click cross-origin regression
+- #418 [Feature] Welcome walkthrough
+- #426 [Story] Campaign wizard: show brief files in Review step
+- #427 [Story] Campaign detail: show wizard-selected options on /clients/[clientSlug]/[campaignReference]
+- #448 [Story] Replace wall-clock timing assertion in accounts.test.ts parallel-fetch test
+- #455 [Task] Login: 'Session expired' banner copy on session-expiry redirect
+- #457 [Bug] dashboard/columns.test.tsx 'densified Name subtitle' fails on main (pre-existing)
+- #467 [Story] Portal ΓÇö per-channel phases UI in campaign-creation wizard
+- #475 [Feature] Multi-region campaign planning (ADR-0021 downstream)
+- #479 [Story] Portal ΓÇö market multi-select + per-channel availability badges (manual FX)
+- #504 [Epic] Planner Wizard v2 ΓÇö intent-driven campaign creation
+- #524 [Story] Cross-channel drift validator + coherence indicator
+- #531 [Feature] Detail card ΓÇö Overview + Assets tabs, list view
+- #532 [Feature] Objectives->metrics matrix + dynamic dashboard
+- #535 [Feature] Account overview + light CRM
+- #541 [Feature] System reporting (financial, audit, campaigns)
+- #559 [Task] Centralise en-AU presentation formatting into a shared portal module
+- #575 [Feature] Media plan in-portal view (read-only) + XLSX deprecation
+- #580 [Story] Plan-state handling (queued/generating/failed/empty) + funnel visualization
+- #581 [Story] Deprecate XLSX as the primary media plan surface
+- #588 [Story] Ops dashboard - UI (fixture-backed, alert shapes provisional pending #554)
+- #589 [Story] Role management - UI matrix viewer (fixture-backed, read-only at pilot)
+- #590 [Story] Task monitor + manual retry - UI (fixture-backed, shapes provisional pending #414 decomposition)
+- #591 [Story] System reporting - UI (fixture-backed, shapes provisional pending #510; sequenced last)
+- #667 [Feature] User management surface (membership-shaped)
+- #669 [Story] Invite UI (email + account + role) calling pending-invitation API
+- #670 [Story] Docs: rewrite portal.md Authorization model to membership model
+- #673 [Story] Topbar account switcher + profile-loader memberships
+- #676 [Story] Per-client scope assignment UI
+- #682 [Bug] Add-user password modal: Cancel returns to Users list instead of Invite User modal (progress lost)
+- #708 [Story] Portal: surface the new lifecycle + composed display states
+- #737 [Story] Filter & sort campaigns by platform (portal)
+- #745 [Story] Platform Access ΓÇö connected-account refinements (markets, import, client link, validation)
+- #761 [Story] Client competitor profiles + market trends view
+- #766 [Task] Manual E2E verification of client edit + soft-disable on dev1/staging (#759)
+- #800 [Feature] Permission-driven portal authorization
+- #801 [Story] can(profile, permission) helper + /me.permissions wiring
+- #802 [Story] roleLabel(code, context) i18n module; retire ROLE_LABEL maps
+- #803 [Story] Migrate portal authorization literals to can()
+- #804 [Story] Source role pick-lists from GET /roles
+- #805 [Story] Guard test failing on new role-string literals
+- #806 [Feature] Docs & decommission
+- #807 [Story] Rewrite portal.md Authorization to roles-as-data + permission-driven
+- #859 Can a campaign reach `build` without a `brand` profile? (blocks structure-gen)
+- #863 [Story] Remove orphaned dashboard <DashboardTable> + exclusive deps after the /campaigns fork (#857)
+- #873 Save brand, primary KPI and selected market from the brief tab
+- #888 [Story] Brand assets (logo/hero) gallery + portal-facing read endpoint
+- #893 [Story] Render enriched brand analysis in the Brand tab (structured sections)
+- #896 [Story] Audience reach panel - universe, estimated reach, specificity
+- #897 [Story] Audience affinity panel - channels, creators, content categories
+- #898 [Task] Brand Profile modal: full focus trap (a11y follow-up)
+- #915 [Task] Account & Settings IA - decision + ticket tracker
+- #917 [Task] Verify admin modal-feedback fixes on staging after next portal release (#681/#906/#683)
+- #925 [Story] Staleness-aware / Manual Refresh control on the Brand Profile tab
+- #926 [Story] Brand Profile single-pane-of-glass overview
+- #934 [Feature] Account & Settings IA consolidation cleanups
+- #935 [Task] Retire duplicate/orphan Account routes
+- #936 [Task] Settings rail cleanup (Help link-out; drop notifications from Pilot)
+- #937 [Task] Apply ratified IA naming labels
+- #940 [Story] Portal: "Show Branches tab" client setting + flag-gated empty Branches tab
+- #955 [Spike] Portal MFA approach ΓÇö method, enrolment, recovery, enforcement
+- #956 [Spike] Customer-facing Connections & self-serve linking model
+- #957 [Story] Profile & personal account settings (profile, password, sessions, MFA surface)
+- #958 [Story] Notification preferences matrix (Go-Live)
+- #960 [Story] Agency-scoped Connections surface (status / link / disconnect)
+- #961 [Story] Self-serve connection linking flow (Go-Live)
+- #962 [Story] Client-scoped Connections view
+- #963 [Spike] Portal MFA approach ΓÇö method, enrolment, recovery, enforcement
+- #965 [Story] Profile & personal account settings (profile, password, sessions, MFA surface)
+- #966 [Story] Notification preferences matrix (Go-Live)
+- #967 [Story] /agency/settings ΓÇö agency-level settings & override layer
+- #975 [Feature] Cancel campaign ΓÇö detail-page action + lifecycle support
+- #978 [Bug] Style Guide panel doesn't refresh when a Regenerate completes
+- #979 [Task] Clarify the Look & feel theme vs the Colours palette in the Style Guide panel
+- #983 [Story] Stop silently defaulting the campaign brand on new drafts
+- #990 [Story] Login form: Tab from email moves focus to password
+- #991 [Story] /forgot-password: real reset-request form with email prefill (supersedes #393)
+- #1006 [Task] Agency ad-platform self-serve connection - initiative tracker
+- #1007 [Feature] Planner channel catalogue - DB-driven, runtime-fetched
+- #1008 [Feature] Platform allowlist as a Let-Bidbrain-decide constraint
+- #1009 [Feature] Market-aware channel availability in the Planner
+- #1012 [Story] Persist the platform allowlist and pass it to Let Bidbrain decide
+- #1013 [Story] Market-aware channel availability (badges + gating) in the Planner
+- #1024 [Story] Render read-only Meta campaign structure in the Structure tab (portal data layer)
+- #1032 [Story] Generalise the Connections connect flow (platform picker, terms link, sender email)
+- #1033 [Spike] Operator visibility in the client-facing UI (/account/*, campaigns)
+- #1035 [Story] Persist channel deselection + robust Brief-tab save reconciliation
+- #1036 [Story] Media Plan tab: rename Channel to Platform and show vendor icons
+- #1040 [Story] Portal cleanup: retire stale campaign_client_id refs + fix create-wizard brand field
+- #1048 [Task] Brief tab: surface brief upload failures instead of hiding them behind the Media-plan auto-advance
+- #1050 [Feature] Shared activity/audit table - one engine, three surfaces (ADR-0045)
+- #1051 [Story] Extract ActivityTable from audit-log; migrate campaign Activity tab + member activity
+- #1052 [Story] /admin/audit-log searchable account picker (actor_account_id filter UI)
+- #1056 [Bug] Connection terms links 404 on the public site
+- #1088 [Feature] Performance insights & recommendations surface
+- #1094 [Story] Dashboard: render panels from generated layout
+- #1095 [Story] Dashboard: 'metric unavailable for platforms' state
+- #1107 [Feature] Suggestions workbench, notifications & audit log
+- #1112 [Story] Dashboard insights panel (observations & recommendations on #532)
+- #1166 [Story] Remove hardcoded media-plan platform payload and surface the empty-constraint refusal
+
+## api (124)
+
+- #62 [Story] Report export endpoints (PowerPoint via Canva)
+- #63 [Story] Report completion callback endpoint (n8n -> api)
+- #229 [Bug] keyword_planner test failures on main (geo-targets, post-#219)
+- #239 Per-agency Client name uniqueness (app check + trigger + migration 0031)
+- #241 [Story] POST /campaigns write-time agency vs Direct-Client validation
+- #243 [Story] Extract resolve_campaign_subject_profile shared helper
+- #248 [Story] Email opt-in plumbing for Planner Submit (CampaignCreate field + n8n send)
+- #249 [Story] Extend budget_type enum to accept 'weekly' and 'monthly' (api + portal)
+- #251 [Story] Real channel_account_id binding (channel_accounts catalogue + wizard wiring)
+- #302 [Story] Meta column catalogue: schema + seed migration (api)
+- #303 [Story] Meta plan converter: read catalogue -> flatten -> emit bulk-import XLSX + portal export endpoint
+- #336 [Task] api: server-side email + credential validation on /auth/login (dup of #184)
+- #338 [Task] api: /auth/login accepts captchaToken + forwards to gotrue (dup of #188)
+- #411 [Bug] Resources download leaks Supabase storage URL
+- #414 [Feature] Task monitor + manual retry surface (admin)
+- #436 [Story] Renderer: Supabase Storage upload + signed URLs + sync /render endpoint **(in progress)**
+- #453 [Spike] Auth-method roadmap - MFA / passwordless / OAuth+SSO: flow seam + identity provisioning
+- #458 [Story] Harden client_slug create against concurrent same-name races
+- #463 [Feature] Campaign taxonomy completion
+- #481 [Story] Reporting ΓÇö per-phase + funnel-stage-aware KPI variant selection in template engine
+- #496 [Story] Drop deprecated campaign_channels.bidding_strategy after readers migrate
+- #505 [Epic] Client Intelligence ΓÇö brand, style, competitors, trends
+- #506 [Epic] Media Plan Engine ΓÇö generation, validation, approval
+- #507 [Epic] Campaign Lifecycle & Detail Card ΓÇö states, activation, audit
+- #508 [Epic] Admin Portal ΓÇö accounts, ops, configuration
+- #511 [Feature] Campaign Intent contract & storage
+- #512 [Feature] Client style guide generation
+- #513 [Feature] Competitor & market intelligence
+- #515 [Feature] Media plan editing, validation & approvals
+- #516 [Feature] Media plan export (style-guided, no structures)
+- #517 [Story] channel_benchmarks table + seed
+- #518 [Feature] PCS storage & lifecycle (JSONB, gated, stale-able)
+- #525 [Feature] Campaign state machine & re-gating
+- #526 [Feature] Assisted activation (managed, no platform APIs)
+- #527 [Story] Assisted-activation writeback ΓÇö per-phase external ids (supersedes #468)
+- #528 [Story] Managed-activation handoff ΓÇö Activate -> operator request
+- #529 [Story] channel_accounts manual admin entry (no OAuth)
+- #534 [Story] Benchmarks feedback loop (ingest -> channel_benchmarks)
+- #538 [Feature] System options / configuration (incl. LLM management)
+- #539 [Feature] Role management / permissions
+- #544 [Story] NOT-NULL/FK tightening on taxonomy columns
+- #545 [Task] Resolve KpiCard vs renderer IR v1 contract drift
+- #555 [Story] Platform-API error catalogue (codes, severity, machine-readable remediation)
+- #558 [Epic] Notifications & Integrations - webhook delivery engine (post-pilot)
+- #570 [Story] Spend-metering seam (S2) - event contract with currency + ADR-0026 placement locked
+- #582 [Story] Re-source MediaPlanView from the DB-stored plan (replaces interim parsed_strategy)
+- #648 [Bug] anon-read RLS policies on Cairns demo-dashboard tables (dash_demo_*)
+- #652 [Task] Partial unique index for one-default-per-(objective,platform) (denormalise platform_id)
+- #653 [Epic] Identity & Access Model v2
+- #664 [Feature] Roles & approval policy
+- #666 [Story] approval_policy + account-level approval gate on #507 transition
+- #671 [Feature] Multi-account UX - account switcher (DEFERRED)
+- #672 [Story] /me/memberships + set-active-account endpoint + session active-account
+- #674 [Feature] Per-client membership scope (DEFERRED)
+- #675 [Story] membership_client_scope table + resolver filter
+- #680 [Bug] Elevated-user creation fails with "auth engine not available"
+- #702 [Story] Model in-flight work as jobs (campaign_id, credits, kinds, one-open-job)
+- #703 [Story] Scheduled launch - campaign timezone + launch_at scheduler
+- #704 [Story] Versioned plan/structure assets with lineage and staleness
+- #705 [Story] Version-scoped approvals for the plan and build gates
+- #706 [Story] Safe live-campaign edits via reviewable revisions
+- #707 [Story] Condition overlays + derived campaign display-state
+- #734 [Story] Add platform sort to the campaigns list API (GET /campaigns?sort=platform)
+- #746 [Story] Make platform manager-kind data-driven (platforms.manager_kind)
+- #764 [Spike] Client-disable campaign cascade policy (block / pause / cancel)
+- #793 [Epic] RBAC role-model normalization (roles as data, permission-driven)
+- #794 [Feature] Roles & permissions as data (API)
+- #795 [Story] roles reference table + seed + rank/seat_class/IdP hook
+- #796 [Story] permissions catalog + FK role_permissions.permission
+- #797 [Story] Re-point role columns to FK roles(code); drop CHECKs; re-key super/user
+- #798 [Story] Effective-permissions resolver on /me payload
+- #799 [Story] GET /roles list endpoint for pick-lists
+- #813 [Story] Activation: launchΓåÆactive trigger + channel-account connection gate
+- #814 [Story] Scheduler: fire scheduled campaigns (launch + future date) ΓåÆ active
+- #830 [Task] Campaign presentation list filtering ΓÇö API presentation_status filter param + portal stage-group filters & condition tags
+- #837 [Spike] In-product audit event-type registry (read-only catalogue)
+- #842 Client agencies[] discloses other linked agencies to non-bidbrain callers
+- #844 Agency / Client model: support sequential agency handover
+- #852 [Story] Style guide consumption interface + fallback default
+- #861 [Task] Harden profile derived-column backfill + last_scrape_error formatting
+- #866 [Epic] Subject hierarchy - Account -> Client -> Brand (ADR-0042)
+- #868 [Story] Client + Brand modules + CRUD + commercials relocation (Account -> Client)
+- #869 [Story] Rewire orchestrators / connection / planner to brand + RBAC re-scope (ADR-0040)
+- #870 [Story] Docs sweep to Client/Brand naming (ADR-0042)
+- #894 [Story] Extract brand logo -> webp, store as brand asset + expose on profile read
+- #916 [Story] Decide + implement invited/unconfirmed-user disable semantics (+ test)
+- #920 [Task] Enforce >=1 evidence tag per competitor / market-trend record
+- #927 [Story] Unify Refresh vs Regenerate semantics + per-panel regenerate
+- #929 [Epic] Billing & metered platform fee
+- #930 [Feature] Seat subscription billing
+- #931 [Feature] Metered spend fee (7.5%)
+- #932 [Feature] Invoicing & tax compliance (AU GST / UK reverse charge)
+- #933 [Feature] Dunning, suspension & automation halt
+- #938 [Task] Admin user/account activity: summary cards
+- #939 [Story] API: persist show_branches_tab on the client (model + read/update schema + PATCH)
+- #941 [Story] Reuse the caller's untouched draft campaign instead of creating a new one
+- #944 [Task] Colour-extraction follow-up nits from #928 qa-review (chromaticity threshold + quorum edge)
+- #948 [Story] Style guide: vision LLM look-and-feel pass (screenshot + tokens -> structured theme)
+- #972 [Feature] Brand multi-CRUD (manage multiple brands per client)
+- #973 [Story] Brand multi-CRUD endpoints (list / create / edit brands per client)
+- #998 [Task] Margin overrides ΓÇö implementation tracker
+- #999 [Epic] Platform Security & Hardening
+- #1001 [Epic] Backend Tech Debt & Correctness
+- #1015 [Feature] Plane 2 - customer connection adapters & self-serve linking
+- #1021 [Story] The Trade Desk linking adapter (partner seat + own-seat key)
+- #1023 [Story] Read endpoint GET /campaigns/{id}/plans/meta-campaign-structure returns the structure view (interim source)
+- #1034 [Story] Add DELETE /campaigns/{id}/channels/{channel_id} to remove a channel allocation
+- #1090 [Story] metrics_catalogue + metric_platform_availability schema + migration
+- #1091 [Story] Seed metrics catalogue + platform availability across 5 platforms
+- #1092 [Story] Soft validator for kpi_code <-> metrics_catalogue (CI + runtime warning)
+- #1093 [Story] Layout-generation service (matrix + catalogue + availability -> panels)
+- #1096 [Feature] Channel-parametrised performance read contract (v1)
+- #1098 [Story] Port 5 platforms + Google search-terms to v1; retire 17 legacy routes
+- #1099 [Story] Reconcile date-range + limit-cap variants; unify cache-control; regenerate OpenAPI/client
+- #1102 [Epic] Optimisation Autonomy (Agent Monitoring)
+- #1103 [Feature] Optimisation policy model & resolution cascade
+- #1104 [Feature] Analysis loop & recommendation generation
+- #1105 [Feature] Channel-parametrised write / enactment contract
+- #1106 [Feature] Recommendation lifecycle & enactment
+- #1108 [Feature] agent_actions store & E6 read projection
+- #1109 [Feature] Shadow mode (ghost logging & calibration)
+- #1110 [Feature] Imported-campaign review & jurisdiction compliance gating (parked)
+- #1164 [Feature] Media plan generation consumes the brief's saved platform & channel selections
+- #1178 [Task] Harden media-plan constraint tests + settle is_active derivation semantics (PR #309 qa-review follow-ups)
+
+## infra (55)
+
+- #30 [Task] Ops follow-ups (long-lived checklist)
+- #195 [Story] Split staging API from production API (Go-Live)
+- #280 [Epic] Formalise dev -> staging -> prod pipeline (post-Cairns)
+- #306 [Feature] Phase 2.3 ΓÇö staging.bidbrain.ai cutover
+- #424 [Task] CI lint + syntax-check + per-stack-tag regression guard for bidbrainai-infra ansible
+- #497 [Feature] Environment hygiene - Docker image lifecycle & disk management
+- #498 [Story] Deploy-pipeline Docker image pruning - keep current + 1 rollback tag per repo (staging + prod)
+- #500 [Story] Disk usage alerting at 80%/90% on staging + prod VPSes
+- #502 [Task] Reinstate two-step prod-deploy approval when 2nd dev onboards or plan upgrades
+- #503 [Story] Filter-aware exports ΓÇö period windowing + dynamic per-campaign platform selection
+- #537 [Feature] Ops dashboard (infra + platform health)
+- #569 [Task] Prod catch-up: deploy v0.27.0 (alembic 0035 -> 0047)
+- #573 [Task] bump-infra-pin: supersede stale auto-pin PRs + satisfy the cross-repo link-form check
+- #641 [Feature] CI/CD & pipeline hardening
+- #678 [Bug] Staging api deploys silently no-op since 0.36.0 ΓÇö llm_config_encryption_key missing from infra env/vault
+- #689 [Task] Dev-box dev loop: portal next-dev + dev-mode hardening (ADR-0034)
+- #697 [Bug] Traefik docker provider failing on dev1 - client version 1.24 too old
+- #739 [Epic] Ops server & monitoring stack (bidbrainai-ops-01)
+- #740 [Feature] Stand up the ops monitoring stack on bidbrainai-ops-01
+- #751 [Story] Monitoring exporters across hosts (node, cAdvisor, postgres, Traefik, blackbox)
+- #752 [Story] Baseline alert rules + Alertmanager Slack routing (critical+error)
+- #753 [Story] audit.alert_events table + Alertmanager webhook receiver
+- #754 [Story] Reverse-watcher: cron health-check + email from prod/staging
+- #757 [Story] Migrate ops-01 to Vultr + private VPC (monitoring scrape network)
+- #775 [Task] Correct per-env api topology references in comments + docs
+- #784 [Feature] Synthetic seed dataset for dev/staging
+- #786 [Task] Seed<->schema drift check + refresh (re-runnable)
+- #860 [Story] Migrate bidbrain-scraper to a dedicated BidbrainAI Cloudflare account
+- #1000 [Epic] Infra & Dev-Environment Reliability
+- #1004 [Feature] New Bidbrain.ai marketing website (bidbrainai-www)
+- #1073 [Spike] Headscale control-plane resilience (backup/restore + HA evaluation)
+- #1081 [Epic] Public web presence & marketing site
+- #1115 [Epic] Serverless free Google Ads generator on Cloudflare - retire bidbrain01
+- #1116 [Feature] Serverless foundation & data model
+- #1117 [Story] Scaffold generator Worker repo (Wrangler + TS + CI to Cloudflare on tag)
+- #1118 [Story] D1 schema + migrations (port bb requests/config/pipeline_steps)
+- #1119 [Story] Turnstile anti-abuse on intake (replaces reCAPTCHA v3)
+- #1135 [Feature] Frontend integration & bidbrain01 decommission
+- #1136 [Story] Point marketing /free-google-ads-generator at the new API (retire try.* iframe)
+- #1137 [Story] Routing/DNS + secrets for the new generator Worker
+- #1138 [Story] Decommission bidbrain01 generator stack + data-retention decision
+- #1139 [Epic] Serverless free Google Ads generator on Cloudflare - retire bidbrain01
+- #1140 [Feature] Serverless foundation & data model
+- #1141 [Story] Scaffold generator Worker repo (Wrangler + TS + CI to Cloudflare on tag)
+- #1142 [Story] D1 schema + migrations (port bb requests/config/pipeline_steps)
+- #1143 [Story] Turnstile anti-abuse on intake (replaces reCAPTCHA v3)
+- #1159 [Feature] Frontend integration & bidbrain01 decommission
+- #1160 [Story] Point marketing /free-google-ads-generator at the new API (retire try.* iframe)
+- #1161 [Story] Routing/DNS + secrets for the new generator Worker
+- #1162 [Story] Decommission bidbrain01 generator stack + data-retention decision
+- #1163 [Task] GCP service account + Workspace DWD grant for generator email sending
+- #1170 [Bug] Expired GHCR pull token in bidbrain-infra vault blocks old-stack deploys
+- #1171 [Task] Reconcile stale monolith stack_playbook.yaml with the migrated shared compose stack
+- #1173 [Task] Sync vaulted BIDBRAIN_API_KEY to the live 64-char webhook key
+- #1175 [Task] Persist the in-situ marketing-nav edits in bidbrainai-www source (site-nav.tsx / site-footer.tsx)
+
+## workflows (45)
+
+- #121 Brand Profile Scrape & Analysis
+- #122 [Feature] Brief Intake & Extraction
+- #123 [Feature] Campaign Plan Generation ΓÇö DB-stored, staged api pipeline
+- #124 [Feature] Google Ads Performance Sync
+- #148 [Story] Campaign submit starts staged plan-generation pipeline (api jobs)
+- #155 [Story] google-ads-performance-sync workflow (GAQL daily metrics)
+- #156 [Story] google-ads-search-terms-sync workflow
+- #161 [Story] Per-channel summary template invocation (Cairns: Google Ads only)
+- #182 [Story] Scrape failure tracking + retry workflow
+- #301 [Feature] Meta column-catalogue drift monitoring + self-healing
+- #373 [Feature] The Trade Desk Performance Sync
+- #473 [Story] AI brief-parser ΓÇö consume taxonomy via aliases/ai_guidance + taxonomy_assignment_audit + confidence gating
+- #480 [Story] AI brief-parser ΓÇö market resolution + channel availability gating + FX stamping
+- #831 [Spike] subject-profile-scrape: API orchestration vs n8n ΓÇö retire + reconcile duplicate copies
+- #919 [Bug] n8n workflow drift detected
+- #1080 [Task] ADR-0051 canary alert sink ΓÇö drift-watch findings land here
+- #1084 [Feature] Meta Ads Performance Sync
+- #1085 [Feature] Reddit Ads Performance Sync
+- #1086 [Feature] LinkedIn Ads Performance Sync
+- #1120 [Feature] Intake & double opt-in
+- #1121 [Story] Submit endpoint: validation + Turnstile + create request in D1
+- #1122 [Story] Verification-link email + verify endpoint + success/error pages
+- #1123 [Feature] Generation pipeline (Cloudflare Workflow)
+- #1124 [Story] Workflow skeleton + per-step state in D1
+- #1125 [Story] Scrape + URL-discovery step (reuse bidbrainai-scraper)
+- #1126 [Story] AI steps ai1-ai4 via bidbrainai-llm-gateway
+- #1127 [Story] Keyword-lookup step (Google Ads keyword data)
+- #1131 [Feature] Transactional email (Gmail API)
+- #1133 [Story] Email send service + templates (verify, download-ready) via Gmail API
+- #1134 [Story] Reminders via Cron Triggers + caps/quiet-hours (replaces WF4)
+- #1144 [Feature] Intake & double opt-in
+- #1145 [Story] Submit endpoint: validation + Turnstile + create request in D1
+- #1146 [Story] Verification-link email + verify endpoint + success/error pages
+- #1147 [Feature] Generation pipeline (Cloudflare Workflow)
+- #1148 [Story] Workflow skeleton + per-step state in D1
+- #1149 [Story] Scrape + URL-discovery step (reuse bidbrainai-scraper)
+- #1150 [Story] AI steps ai1-ai4 via bidbrainai-llm-gateway
+- #1151 [Story] Keyword-lookup step (Google Ads keyword data)
+- #1155 [Feature] Transactional email (Gmail API)
+- #1156 [Spike] Gmail API auth from Cloudflare Workers (service-account JWT vs refresh token)
+- #1157 [Story] Email send service + templates (verify, download-ready) via Gmail API
+- #1158 [Story] Reminders via Cron Triggers + caps/quiet-hours (replaces WF4)
+- #1172 [Bug] Rotate the Anthropic API key exposed in plaintext in beta bb.config
+- #1174 [Task] De-hardcode the WF3 scraper key - use the Bidbrain Scraper API Key credential
+- #1176 [Task] Verify the beta generator E2E run completed (campaign email + download landed)
+
+## channels (16)
+
+- #289 [Epic] Platform/Channel Structures (PCS) ΓÇö all platforms, DB-stored, gated
+- #290 [Feature] Meta Campaign Generation
+- #292 [Story] meta-campaign-structure orchestrator + XLSX skeleton (api)
+- #293 [Story] meta-ad-copy generation + Ads tab + smart truncation
+- #299 [Feature] Media plan strategy layer (cross-channel coherence)
+- #300 [Spike] Media plan schema + intent contract v1 + strategy layer
+- #430 [Epic] Campaign Performance, Metrics & Reporting
+- #519 [Feature] Google Ads structure generation & export
+- #520 [Feature] LinkedIn structure generation & export
+- #521 [Feature] Reddit structure generation & export
+- #522 [Feature] The Trade Desk structure generation & export
+- #523 [Feature] YouDooh structure generation & export
+- #713 [Epic] External platform access & connection model (Go-Live)
+- #718 [Spike] Bidbrain-created ad-account ownership and portability
+- #1167 [Spike] PCS storage model: versioned-JSONB vs normalized fields vs hybrid
+- #1169 [Feature] Independent AI structure-review + apply-loop
+
+## reporting (9)
+
+- #431 [Feature] Renderer v0 ΓÇö PDF adapter, IR schema, theming
+- #533 [Story] Performance-view PPTX export
+- #1113 [Story] Export insight injection + per-export review gate
+- #1128 [Feature] Output rendering & delivery (R2)
+- #1129 [Story] Build XLSX workbook in-Worker
+- #1130 [Story] R2 store + signed download URL + download endpoint + tracking
+- #1152 [Feature] Output rendering & delivery (R2)
+- #1153 [Story] Build XLSX workbook in-Worker
+- #1154 [Story] R2 store + signed download URL + download endpoint + tracking
+
+## cowork (6)
+
+- #268 [Epic] Cowork plugin marketplace - iteration after PR #267
+- #269 [Feature] CI gate: require canonical cross-repo PR link form **(in progress)**
+- #270 [Feature] bidbrainai-issues plugin - extract issue creation as discrete skills
+- #271 [Feature] bidbrainai-docs plugin - frontmatter scaffolding + ADR template
+- #274 [Story] Mirror pr-link-form workflow to bidbrainai-portal / -workflows / -infra
+- #1002 [Task] Formalise bug/task homing + enable bidbrainai-bug plugin **(in progress)**
+
+## unlabelled (5)
+
+- #193 [Story] google-ads ad-copy generation (Ads RSA + Sitelinks tabs + smart-truncation)
+- #211 [Story] Port WF3 `Build XLSX Workbook` into `_xlsx.py` (production-grade Summary tab + styling)
+- #212 [Story] Port WF3 AI 2 system prompt blocks into gateway `google-ads-structure` prompt
+- #710 ^relocate /campaigns/[id] ΓåÆ /campaigns/[campaign_reference] + add direct-client detail route
+- #865 [Coordination] Live WIP log ΓÇö who's working on what
+
+## connections (3)
+
+- #1063 [Spike] Platform-agnostic connection-test transcript surface
+- #1064 [Spike] en-AU UI localisation layer for white-label spelling
+- #1065 [Story] Surface full Test-connection result (no truncation) + confirm Google Ads API version
+
+## campaign (2)
+
+- #843 [Task] Align plan-generation trigger endpoints onto the shared campaign visibility scope
+- #876 [Task] Random PNR-style campaign reference (CMP-YYMM-XXXXXX), supersede ADR-0007
+
+## plan-generation (2)
+
+- #856 [Story] E3 consumes competitor + trends as weighted evidence
+- #1168 [Spike] Large-campaign sharded generation + token-cap handling
+
+## devops (1)
+
+- #499 [Story] Slim renderer image - reorder Playwright layers for cross-release caching
+
+## schema (1)
+
+- #562 [Task] Retention jobs via pg_cron per ADR-0026 defaults
+
+## google-ads (1)
+
+- #597 [Bug] Google Ads landing-page URL builder concatenates origin onto absolute URLs (carry-forward guard for google-ads-structure port)
